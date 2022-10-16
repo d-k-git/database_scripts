@@ -48,10 +48,11 @@ public class MySqlApp {
             }
 
 
-            // creating table
-            //for (int i=0; i<11; i++ ) {
-               //statement.executeUpdate(sqlCommand + i + "','2')  ;");
-           //}
+            /* creating table
+            for (int i=0; i<11; i++ ) {
+               statement.executeUpdate(sqlCommand + i + "','2')  ;");
+             } */
+            
             conn.close();
         } catch (Exception e) {
             e.printStackTrace();
