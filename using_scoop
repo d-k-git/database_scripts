@@ -1,0 +1,13 @@
+#  Import data from Oracle db into Hive https://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html
+
+sqoop import \
+--connect jdbc:oracle:thin:@11.11.11.11:1521:DB \
+--username MPBX \
+--password **** \
+--num-mappers 1 \
+--query "select distinct REGEXP_SUBSTR(LOCAL_CALLID, '[^: ]+', 1, 1) AS sessions,'PART20220704' AS part,RECORD_ID  from db.orders partition (PART20220704) where \$CONDITIONS" \
+--hive-import \
+--target-dir /warehouse/tablespace/external/hive/db_stg.db/test_sqoop \
+--hive-database db_stg \
+--hive-table test_sqoop \
+--hive-delims-replacement ''
